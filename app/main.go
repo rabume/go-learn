@@ -17,11 +17,16 @@ func main() {
 	delete(colors1, 2)
 
 	// Create map and add directly some values
-	colors2 := map[string]string{
+	colors := map[string]string{
 		"red":    "#ff0000",
-		"yellow": "ffdd00",
+		"yellow": "#ffdd00",
 	}
 
-	fmt.Println(colors1)
-	fmt.Println(colors2)
+	printMap(colors)
+}
+
+func printMap(c map[string]string) {
+	for color, hex := range c {
+		fmt.Println("Hex code for", color, "is", hex)
+	}
 }
