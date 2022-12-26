@@ -4,31 +4,34 @@ import (
 	"fmt"
 )
 
-type bot interface {
-	getGreeting() string
+type shape interface {
+	getArea() float64
 }
 
-type englishBot struct{}
-type germanBot struct{}
+type triangle struct {
+	height float64
+	base   float64
+}
+type square struct {
+	sideLength float64
+}
 
 func main() {
-	eb := englishBot{}
-	sb := germanBot{}
+	ts := triangle{height: 5.0, base: 10.0}
+	ss := square{sideLength: 10}
 
-	printGreeting(eb)
-	printGreeting(sb)
+	printArea(ts)
+	printArea(ss)
 }
 
-func (eb englishBot) getGreeting() string {
-	// Custom logic here
-	return "Hello there!"
+func (ts triangle) getArea() float64 {
+	return 0.5 * ts.height * ts.base
 }
 
-func (gb germanBot) getGreeting() string {
-	// Custom logic here
-	return "Guten Tag!"
+func (ss square) getArea() float64 {
+	return ss.sideLength * ss.sideLength
 }
 
-func printGreeting(b bot) {
-	fmt.Println(b.getGreeting())
+func printArea(s shape) {
+	fmt.Println(s.getArea())
 }
